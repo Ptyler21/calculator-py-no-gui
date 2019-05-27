@@ -6,10 +6,11 @@ import sys
 logging.basicConfig(level=logging.DEBUG,filename="example.log")
 
 class calculator:
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
+    def __init__(self):
+        self.x = int(input("give me the first number: "))
+        self.y = int(input("give me the second number: "))
         self.choice = int(input("Please give me choice: "))
+        self.loop = True
         logging.debug("Operation Created: x = {} and y={}".format(self.x,self.y))
 
     def addition(self):
@@ -33,21 +34,36 @@ class calculator:
         return multiplyOperation
 
     def printoption(self):
-        print(self.choice)
-        logging.debug("user chose {}".format(self.choice))
-        if int(1) == self.choice:
+        #userSecondChoice = input("second")
+
+        loopChoice = self.choice
+        logging.debug("user chose {}".format(loopChoice))
+        if int(1) == loopChoice:
             print(self.addition())
-        elif int(2) == self.choice:
+        elif int(2) == loopChoice:
             print(self.subtraction())
-        elif int(3) == self.choice:
+        elif int(3) == loopChoice:
             print(self.division())
-        elif int(4) == self.choice:
+        elif int(4) == loopChoice:
             print(self.mulitply())
         else:
             print("Non-valid option")
-            sys.exit(0)
 
+class addCalc:
+    def __init__(self):
+        self.newlist = newlist = {}
 
-tree = calculator(3,4)
+def main():
+    live = []
+    tree = calculator()
 
-tree.printoption()
+    tree.printoption()
+
+    objs = [calculator() for i in range(10)]
+    for obj in objs:
+        live.append(obj)
+
+    objs[2].printoption()
+
+if __name__ == "__main__":
+    main()
