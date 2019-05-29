@@ -49,21 +49,35 @@ class calculator:
         else:
             print("Non-valid option")
 
+    def multiplePrint(self):
+        userCont = True
+        #userSecondChoice = input("would you like to go again?(y/n): ").strip()
+        userInt = 0
+        while userCont:
+            userSecondChoice = input("would you like to go again?(y/n): ").strip()
+            if "n" == userSecondChoice:
+               print("Good bye!")
+               userCont = False
+               sys.exit(0)
+            elif "y" == userSecondChoice:
+               userInt += 1
+               live = []
+               objs = [calculator().printoption() for i in range(userInt)]
+               for obj in objs:
+                   live.append(obj)
+            pass
+
 class addCalc:
     def __init__(self):
         self.newlist = newlist = {}
 
 def main():
-    live = []
     tree = calculator()
 
     tree.printoption()
+    tree.multiplePrint()
 
-    objs = [calculator() for i in range(10)]
-    for obj in objs:
-        live.append(obj)
 
-    objs[2].printoption()
 
 if __name__ == "__main__":
     main()
