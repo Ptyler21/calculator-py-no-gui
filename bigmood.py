@@ -6,13 +6,10 @@ import sys
 logging.basicConfig(level=logging.DEBUG,filename="example.log")
 
 class calculator:
-    def __init__(self):
-        self.x = int(input("give me the first number: "))
-        self.y = int(input("give me the second number: "))
-        self.choice = int(input("Please give me choice: "))
-        self.loop = True
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
         logging.debug("Operation Created: x = {} and y={}".format(self.x,self.y))
-
     def addition(self):
         additionOperation = self.x + self.y
         logging.debug("adding {} + {} , expected result = {}".format(self.x,self.y,additionOperation))
@@ -33,67 +30,53 @@ class calculator:
         logging.debug("multiplying {} * {}, expected result = {}".format(self.x,self.y,multiplyOperation))
         return multiplyOperation
 
+
     def printoption(self):
         #userSecondChoice = input("second")
 
-        loopChoice = self.choice
-        logging.debug("user chose {}".format(loopChoice))
-        if int(1) == loopChoice:
-            print(self.addition())
-        elif int(2) == loopChoice:
-            print(self.subtraction())
-        elif int(3) == loopChoice:
-            print(self.division())
-        elif int(4) == loopChoice:
-            print(self.mulitply())
-        else:
-            print("Non-valid option")
-
-    '''
-    This function allows the user to choose whether they wish to loop again or not but only three times. After this they are forced to
-    input numbers whether they want to or not. 
-    give me the first number: 1
-give me the second number: 2
-Please give me choice: 2
--1
-would you like to go again?(y/n): y
-give me the first number: 1
-give me the second number: 2
-Please give me choice: 4
-2
-would you like to go again?(y/n): y
-give me the first number: 1
-give me the second number: 2
-Please give me choice: 4
-    '''
-    def multiplePrint(self):
-        userCont = True
-        #userSecondChoice = input("would you like to go again?(y/n): ").strip()
-        userInt = 0
-        while userCont:
-            userSecondChoice = input("would you like to go again?(y/n): ").strip()
-            if "n" == userSecondChoice:
-               print("Good bye!")
-               userCont = False
-               sys.exit(0)
-            elif "y" == userSecondChoice:
-               userInt += 1
-               live = []
-               objs = [calculator().printoption() for i in range(userInt)]
-               for obj in objs:
-                   live.append(obj)
-
-
-class addCalc:
-    def __init__(self):
-        self.newlist = newlist = {}
+        ans = True
+        while ans:
+            self.x = int(input("Give me the first number: "))
+            self.y = int(input("Give me the second number: "))
+            ans = input("make a choice (1-4), press 5 to exit: ")
+            logging.debug("user chose {}".format(ans))
+            if "1" == ans:
+                print(self.addition())
+                userExitChoice = input("Would you like to continue y/n: ")
+                if "y" == userExitChoice:
+                    continue
+                else:
+                    break
+            elif "2" == ans:
+                print(self.subtraction())
+                userExitChoice = input("Would you like to continue y/n: ")
+                if "y" == userExitChoice:
+                    continue
+                else:
+                    break
+            elif "3" == ans:
+                print(self.division())
+                userExitChoice = input("Would you like to continue y/n: ")
+                if "y" == userExitChoice:
+                    continue
+                else:
+                    break
+            elif "4" == ans:
+                print(self.mulitply())
+                userExitChoice = input("Would you like to continue y/n: ")
+                if "y" == userExitChoice:
+                    continue
+                else:
+                    break
+            elif "5" == ans:
+                print("Thank you for using the calculator!")
+                sys.exit(0)
+            else:
+                print("Non-valid option")
 
 def main():
-    tree = calculator()
-
+    tree = calculator(3,4)
     tree.printoption()
-    tree.multiplePrint()
-
 
 
 if __name__ == "__main__":
