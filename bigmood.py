@@ -49,6 +49,23 @@ class calculator:
         else:
             print("Non-valid option")
 
+    '''
+    This function allows the user to choose whether they wish to loop again or not but only three times. After this they are forced to
+    input numbers whether they want to or not. 
+    give me the first number: 1
+give me the second number: 2
+Please give me choice: 2
+-1
+would you like to go again?(y/n): y
+give me the first number: 1
+give me the second number: 2
+Please give me choice: 4
+2
+would you like to go again?(y/n): y
+give me the first number: 1
+give me the second number: 2
+Please give me choice: 4
+    '''
     def multiplePrint(self):
         userCont = True
         #userSecondChoice = input("would you like to go again?(y/n): ").strip()
@@ -65,7 +82,7 @@ class calculator:
                objs = [calculator().printoption() for i in range(userInt)]
                for obj in objs:
                    live.append(obj)
-            pass
+
 
 class addCalc:
     def __init__(self):
